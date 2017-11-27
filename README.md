@@ -10,6 +10,14 @@ make main
 ./bin/main /dev/random
 ```
 
+## Reader + Writer Classes
+
+```sh
+git checkout reader+writer 
+make main
+./bin/main /dev/random
+```
+
 ## License
 
 MIT
