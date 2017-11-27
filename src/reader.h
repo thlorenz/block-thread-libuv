@@ -6,7 +6,7 @@
 
 class Reader {
   public:
-    worker_t* start();
+    worker_t& start();
 
   private:
     worker_t work_;

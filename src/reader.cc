@@ -20,10 +20,10 @@ void Reader::read_(void* data) {
   }
 }
 
-worker_t* Reader::start() {
+worker_t& Reader::start() {
   assert(0 == uv_mutex_init(&work_.mutex));
   assert(0 == uv_cond_init(&work_.cv));
   uv_thread_create(&thread_, read_, this);
   work_.thread = thread_;
-  return &work_;
+  return work_;
 }

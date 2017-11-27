@@ -22,9 +22,9 @@ int main(int argc, const char* argv[]) {
 
   // reader creates it's own thread
   Reader reader;
-  worker_t* work = reader.start();
+  worker_t& work = reader.start();
 
   // writer runs on main thread
-  Writer writer(*work);
+  Writer writer(work);
   write_chunks(file, writer);
 }
