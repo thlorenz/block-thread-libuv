@@ -44,4 +44,11 @@ $(MAIN): $(UV_LIB) $(OBJS)
 clean:
 	@rm -f $(OBJS) $(MAIN)
 
-.PHONY: main
+
+
+xcode:
+	@mkdir -p build
+	(cd build && rm -rf CMakeCache.txt CMakeFiles && \
+		CC=`xcrun -find cc` CXX=`xcrun -find c++` LDFLAGS='$(LDFLAGS)' cmake -G Xcode ..)
+
+.PHONY: main xcode
