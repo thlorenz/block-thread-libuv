@@ -18,6 +18,26 @@ make main
 ./bin/main /dev/random
 ```
 
+## Reader + Writer combined into a Writable Class
+
+```sh
+git checkout writable 
+make main
+./bin/main /dev/random
+```
+
+## Writable JSON SAX parser
+
+This parser supports pushing chunks to it asynchronously via the `writable.write`.
+It will block the reader thread if it runs out of chunks and waits until the main thread pushes
+more data.
+
+```sh
+git checkout json-parser 
+make main
+./bin/main <path>/<to>/<file.json> 
+```
+
 ## License
 
 MIT
