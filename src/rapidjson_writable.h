@@ -3,15 +3,24 @@
 
 #include "common.h"
 #include <assert.h>
+#include "rapidjson_istreamwrapper.h"
+#include "rapidjson_saxhandler.h"
+#include "rapidjson/reader.h"
 
 class Writable {
   public:
     Writable();
-    void write(const std::vector<char> chunk);
+    void write(const char* chunk, size_t size);
+    void finish(bool wait);
 
   private:
     worker_t work_;
     uv_thread_t thread_;
-    static void read_(void* data);
+
+    SaxHandler handler_; 
+    rapidjson::Reader reader_;
+    IStreamWrapper stream_;
+
+    static void startParser_(void* data);
 };
 #endif

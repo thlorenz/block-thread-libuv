@@ -1,5 +1,6 @@
 #ifndef RAPIDJSON_SAXHANDLER_H
 #define RAPIDJSON_SAXHANDLER_H
+
 #include "rapidjson/rapidjson.h"
 #include <string>
 
@@ -121,27 +122,5 @@ struct SaxHandler {
     SaxHandler(const SaxHandler& noCopyConstruction);
     SaxHandler& operator=(const SaxHandler& noAssignment);
 };
-
-std::string jsonTypeToString(JsonType type) {
-  switch(type) {
-    // Value types
-    case Null: return "null";
-    case Bool: return "bool";
-    case Int: return "int";
-    case Uint: return "uint";
-    case Int64: return "int64";
-    case Uint64: return "uint64";
-    case Double: return "double";
-    case Number: return "number";
-    case String: return "string";
-
-    // Parser Signal types
-    case Key: return "[key]";
-    case StartObject: return "[start object]";
-    case EndObject: return "[end object]";
-    case StartArray: return "[start array]";
-    case EndArray: return "[end array]";
-  }
-}
 
 #endif
